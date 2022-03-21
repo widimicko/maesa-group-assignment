@@ -25,6 +25,10 @@ Route::prefix('dashboard')
     ->middleware('auth')
     ->group(function() {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/profile', [DashboardController::class, 'showProfile'])->name('profile');
+        Route::post('/profile', [DashboardController::class, 'updateProfile']);
+        Route::post('/change-password', [DashboardController::class, 'updatePassword'])->name('password.change');
+
         Route::resource('/employees', EmployeeController::class)->except('show');
         Route::resource('/products', ProductController::class);
         Route::resource('/users', UserController::class)->except('show');

@@ -36,6 +36,7 @@
               <hr class="dropdown-divider">
             </li>
             <li>
+              <a href="{{ route('profile') }}" class="dropdown-item d-flex align-items-center">My Profile</a>
               <button type="button" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#logoutModal">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
