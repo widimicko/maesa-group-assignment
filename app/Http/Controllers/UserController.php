@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -14,7 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.users.users', [
+            'users' => User::all()
+        ]);
     }
 
     /**
@@ -35,7 +38,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedRequest = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users'
+        ]);
+
+        $validatedRequest['password'] = Hash::make('password');
+
+        User::create($validatedRequest);
+        return redirect()->route('users.index')->with('success', 'New user created successfully');
     }
 
     /**
@@ -69,7 +80,19 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email'
+        ];
+
+        if ($request->email != $user->email) {
+            $rules['email'] = 'required|email|unique:users';
+        }
+
+        $validatedRequest = $request->validate($rules);
+
+        User::find($user->id)->update($validatedRequest);
+        return redirect()->route('users.index')->with('success', 'User data updated successfully');
     }
 
     /**
@@ -80,6 +103,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        User::destroy($user->id);
+        return redirect()->route('users.index')->with('success', 'user data deleted successfully');
     }
 }
