@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        User::factory(10)->create();
+        User::factory(2)->create();
 
         $this->call([
             EmployeeSeeder::class,

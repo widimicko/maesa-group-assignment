@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 
@@ -15,7 +16,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.products.products', [
+            'products' => Product::all()
+        ]);
     }
 
     /**
@@ -25,7 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.products.create');
     }
 
     /**
@@ -36,7 +39,11 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        $validatedRequest = $request->all();
+        $validatedRequest['image'] = $request->file('image')->store('images/products');
+
+        Product::create($validatedRequest);
+        return redirect()->route('products.index')->with('success', 'New product created successfully');
     }
 
     /**
@@ -58,7 +65,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('dashboard.products.edit', [
+            'product' => $product
+        ]);
     }
 
     /**
@@ -70,7 +79,15 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $validatedRequest = $request->all();
+
+        if ($request->file('image')) {
+            Storage::delete($product->image);
+            $validatedRequest['image'] = $request->file('image')->store('images/products');
+        }
+
+        Product::find($product->id)->update($validatedRequest);
+        return redirect()->route('products.index')->with('success', 'Product data updated successfully');
     }
 
     /**
@@ -81,6 +98,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        if ($product->image) {
+            Storage::delete($product->image);
+        }
+        
+        Product::destroy($product->id);
+        return redirect()->route('products.index')->with('success', 'Product data deleted successfully');
     }
 }
