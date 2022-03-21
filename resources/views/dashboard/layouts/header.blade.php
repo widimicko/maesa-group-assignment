@@ -1,7 +1,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="{{ url('/dashboard') }}" class="logo d-flex align-items-center">
+      <a href="{{ route('dashboard') }}" class="logo d-flex align-items-center">
         <span class="d-none d-lg-block">Micko Widi</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -17,7 +17,6 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>{{ Auth::user()->name }}</h6>
-              <span>{{ Auth::user()->role }}</span>
             </li>
             <li>
               <hr class="dropdown-divider">

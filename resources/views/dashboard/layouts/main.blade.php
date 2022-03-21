@@ -1,4 +1,4 @@
-@push('addon-head')
+@push('head')
   <!-- BootstrapMade (NiceAdmin) -->
   <link href="{{ asset('library/niceadmin/style.css') }}" rel="stylesheet">
 @endpush
@@ -42,7 +42,7 @@
   </div>
 @endsection
 
-@push('addon-script')
+@push('script')
    <!-- NiceAdmin -->
    <script src="{{ asset('library/niceadmin/script.js') }}"></script>
 @endpush
