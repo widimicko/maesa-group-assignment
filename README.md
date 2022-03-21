@@ -26,6 +26,12 @@ Start Server
 
 Then open in the browser
 
+The Default User is
+
+`email: admin@gmail.com`
+
+`password: password`
+
 
 
 ## Features
