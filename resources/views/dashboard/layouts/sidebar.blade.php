@@ -10,9 +10,6 @@
         </a>
       </li>
 
-    @can('Admin')
-      <li class="nav-heading">Administrator</li>
-
       <li class="nav-item">
         <a class="nav-link collapsed {{ Request::is('dashboard/employees*') ? 'active' : '' }}" href="{{ url('/dashboard/employees') }}">
           <i class="bi bi-calendar2-event-fill"></i>
@@ -26,7 +23,6 @@
           <span>Users</span>
         </a>
       </li>
-    @endcan
 
   </ul>
 
