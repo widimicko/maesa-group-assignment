@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
  */
-class ProductFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,10 +17,7 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'category_id' => rand(1, 4),
             'name' => $this->faker->word(),
-            'image' => '',
-            'description' => $this->faker->paragraph(),
         ];
     }
 }

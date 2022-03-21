@@ -10,20 +10,27 @@
       </a>
     </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed {{ Request::is('dashboard/events*') ? 'active' : '' }}" href="{{ route('products.index') }}">
-          <i class="bi bi-basket"></i>
-          <span>Products</span>
-        </a>
-      </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed {{ Request::is('dashboard/categories*') ? 'active' : '' }}" href="{{ route('categories.index') }}">
+        <i class="bi bi-tags"></i>
+        <span>Category</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed {{ Request::is('dashboard/products*') ? 'active' : '' }}" href="{{ route('products.index') }}">
+        <i class="bi bi-basket"></i>
+        <span>Products</span>
+      </a>
+    </li>
 
 
-      <li class="nav-item">
-        <a class="nav-link collapsed {{ Request::is('dashboard/users*') ? 'active' : '' }}" href="{{ route('users.index') }}">
-          <i class="bi bi-grid-fill"></i>
-          <span>Users</span>
-        </a>
-      </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed {{ Request::is('dashboard/users*') ? 'active' : '' }}" href="{{ route('users.index') }}">
+        <i class="bi bi-grid-fill"></i>
+        <span>Users</span>
+      </a>
+    </li>
 
   </ul>
 

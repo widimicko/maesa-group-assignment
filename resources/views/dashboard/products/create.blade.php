@@ -31,6 +31,19 @@
           @enderror
         </div>
         <div class="mb-3">
+          <label class="form-label">Category</label>
+          <select name="category_id" class="form-select">
+            @foreach ($categories as $category)
+              <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->name }}</option>
+            @endforeach
+          </select>
+          @error('category_id')
+            <div class="invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
+        <div class="mb-3">
           <label for="image" class="form-label">Image</label>
           <img class="img-preview img-fluid mb-3 col-sm-5">
           <input type="file" name="image" class="form-control" id="image" accept="image/*" onchange="previewImage()">

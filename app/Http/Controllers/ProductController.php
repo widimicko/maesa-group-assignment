@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -28,7 +29,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('dashboard.products.create');
+        return view('dashboard.products.create', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -66,7 +69,8 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         return view('dashboard.products.edit', [
-            'product' => $product
+            'product' => $product,
+            'categories' => Category::all()
         ]);
     }
 
