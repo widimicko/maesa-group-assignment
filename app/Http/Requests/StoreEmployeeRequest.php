@@ -13,7 +13,7 @@ class StoreEmployeeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class StoreEmployeeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|max:255',
+            'phone' => 'required|numeric|digits_between:11,13',
+            'image' => 'required|image',
+            'address' => 'required|max:255',
+            'birthdate' => 'required',
+            'gender' => 'required',
         ];
     }
 }

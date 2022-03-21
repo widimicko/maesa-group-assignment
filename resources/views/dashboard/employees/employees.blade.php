@@ -37,6 +37,7 @@
               <th>Name</th>              
               <th>Phone</th>
               <th>Address</th>
+              <th>Bhirtdate</th>
               <th>Gender</th>
               <th>Created At</th>
               <th>Updated At</th>
@@ -53,6 +54,7 @@
               </td>
               <td> {{ $employee->phone }} </td>
               <td> {{ $employee->address }} </td>
+              <td> {{ $employee->birthdate }} </td>
               <td> {{ $employee->gender }} </td>
               <td> {{ $employee->created_at }} </td>
               <td> {{ $employee->updated_at->diffForHumans() }} </td>

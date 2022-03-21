@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
+use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller
 {
@@ -27,7 +28,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.employees.create');
     }
 
     /**
@@ -38,7 +39,11 @@ class EmployeeController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
-        //
+        $validatedRequest = $request->all();
+        $validatedRequest['image'] = $request->file('image')->store('images/employees');
+
+        Employee::create($validatedRequest);
+        return redirect()->route('employees.index')->with('success', 'New employee created successfully');
     }
 
     /**
@@ -60,7 +65,9 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        return view('dashboard.employees.edit', [
+            'employee' => $employee
+        ]);
     }
 
     /**
@@ -72,7 +79,15 @@ class EmployeeController extends Controller
      */
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        //
+        $validatedRequest = $request->all();
+
+        if ($request->file('image')) {
+            Storage::delete($employee->image);
+            $validatedRequest['image'] = $request->file('image')->store('images/employees');
+        }
+
+        Employee::find($employee->id)->update($validatedRequest);
+        return redirect()->route('employees.index')->with('success', 'Employee data updated successfully');
     }
 
     /**
@@ -83,6 +98,11 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        if ($employee->image) {
+            Storage::delete($employee->image);
+        }
+        
+        Employee::destroy($employee->id);
+        return redirect()->route('employees.index')->with('success', 'Employee data deleted successfully');
     }
 }

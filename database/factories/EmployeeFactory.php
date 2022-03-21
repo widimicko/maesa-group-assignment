@@ -20,6 +20,7 @@ class EmployeeFactory extends Factory
             'name' => $this->faker->name(),
             'phone' => $this->faker->phoneNumber(),
             'image' => '',
+            'birthdate' => $this->faker->date(),
             'address' => $this->faker->address(),
             'gender' => 'Man',
         ];
