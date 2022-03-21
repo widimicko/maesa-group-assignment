@@ -21,22 +21,21 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            @can('Participant')  
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="{{ url('/dashboard/profile') }}">
-                  <i class="bi bi-person"></i>
-                  <span>My Profile</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-            @endcan
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{{ url('/dashboard/profile') }}">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
             <li>
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a href="{{ route('profile') }}" class="dropdown-item d-flex align-items-center">My Profile</a>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a href="{{ route('profile') }}" class="dropdown-item d-flex align-items-center"><i class="bi bi-person"></i> My Profile</a>
+              <hr class="dropdown-divider">
               <button type="button" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#logoutModal">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
