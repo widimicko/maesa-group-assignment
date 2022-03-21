@@ -57,3 +57,13 @@ The Default User is
 
 - [@widimicko](https://www.github.com/widimicko)
 
+## Screenshots
+
+![App Screenshot](https://ik.imagekit.io/mickowidi/maesa/tr:q-50/first.png)
+![App Screenshot](https://ik.imagekit.io/mickowidi/maesa/tr:q-50/second.png)
+![App Screenshot](https://ik.imagekit.io/mickowidi/maesa/tr:q-50/third.png)
+![App Screenshot](https://ik.imagekit.io/mickowidi/maesa/tr:q-50/fourth.png)
+![App Screenshot](https://ik.imagekit.io/mickowidi/maesa/tr:q-50/fifth.png)
+![App Screenshot](https://ik.imagekit.io/mickowidi/maesa/tr:q-50/sixth.png)
+![App Screenshot](https://ik.imagekit.io/mickowidi/maesa/tr:q-50/seventh.png)
+![App Screenshot](https://ik.imagekit.io/mickowidi/maesa/tr:q-50/eigth.png)
